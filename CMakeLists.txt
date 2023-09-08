@@ -5,5 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(analisisNumerico
         main.cpp
-        menu.cpp
-        menu.h)
+        display.cpp
+        raices.cpp
+        ecuacionesLineales.cpp
+        ajusteCurvas.cpp)
