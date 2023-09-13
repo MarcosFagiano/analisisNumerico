@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(analisisNumerico
         main.cpp
+        Gauss.cpp
+        Gauss.cpp
 )
