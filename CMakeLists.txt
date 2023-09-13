@@ -7,4 +7,5 @@ add_executable(analisisNumerico
         main.cpp
         raices/puntoFijo.cpp
         raices/biseccion.cpp
+        raices/secante.cpp
 )
