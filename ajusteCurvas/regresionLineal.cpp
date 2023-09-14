@@ -50,7 +50,7 @@ void calcularRegresionLineal(const vector<double>& x, const vector<double>& y, d
 int main() {
     // Datos de ejemplo
     vector<double> x = {1,2,3,4,5,6,7};
-    vector<double> y = {0.5,2.5,2,4,3.5,6,5.5}git ;
+    vector<double> y = {0.5,2.5,2,4,3.5,6,5.5} ;
 
     // Variables para los coeficientes de la regresión
     double pendiente, interseccion;
