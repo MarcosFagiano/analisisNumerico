@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// Función para calcular las diferencias divididas
+// Funcion para calcular las diferencias divididas
 vector<double> diferencias_divididas(vector<double>& x, vector<double>& y) {
     int n = x.size();
     vector<double> coeficientes(n, 0.0);
@@ -26,15 +26,15 @@ vector<double> diferencias_divididas(vector<double>& x, vector<double>& y) {
 // Función para evaluar el polinomio interpolante en un punto x
 double evaluar_polinomio(vector<double>& coeficientes, vector<double>& x, double punto) {
     int n = x.size();
-    double resultado = 0.0;
+    double result = 0.0;
     double termino = 1.0;
 
     for (int i = 0; i < n; i++) {
-        resultado += coeficientes[i] * termino;
+        result += coeficientes[i] * termino;
         termino *= (punto - x[i]);
     }
 
-    return resultado;
+    return result;
 }
 
 int main() {
@@ -43,11 +43,11 @@ int main() {
 
     vector<double> coeficientes = diferencias_divididas(x, y);
 
-    // Evaluar el polinomio interpolante en un punto, por ejemplo, x = 2.5
+    // Evaluar el polinomio interpolante en un punto
     double punto_evaluado = 0.99;
-    double resultado = evaluar_polinomio(coeficientes, x, punto_evaluado);
+    double result = evaluar_polinomio(coeficientes, x, punto_evaluado);
 
-    cout << "El valor interpolado en x = " << punto_evaluado << " es " << resultado << endl;
+    cout << "El valor interpolado en x = " << punto_evaluado << " es " << result << endl;
 
     return 0;
 }
