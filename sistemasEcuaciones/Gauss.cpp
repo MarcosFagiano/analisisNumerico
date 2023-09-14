@@ -7,47 +7,47 @@
 
 using namespace std;
 
-void printMatrix(const vector<vector<double>>& matrix, const vector<double>& b) {
-    int n = matrix.size();
+void printMatriz(const vector<vector<double>>& matriz, const vector<double>& b) {
+    int n = matriz.size();
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
-            cout << matrix[i][j] << "\t";
+            cout << matriz[i][j] << "\t";
         }
         cout << "| " << b[i] << endl;
     }
 }
 
 
-void gaussianElimination(vector<vector<double>>& matrix, vector<double>& b) {
-    int n = matrix.size();
+void eliminacionGaussiana(vector<vector<double>>& matriz, vector<double>& b) {
+    int n = matriz.size();
 
     for (int i = 0; i < n; ++i) {
-        // Buscar el elemento máximo en la columna actual
+        // Se busca el numero mas grande de la fila
         int maxRow = i;
         for (int j = i + 1; j < n; ++j) {
-            if (abs(matrix[j][i]) > abs(matrix[maxRow][i])) {
+            if (abs(matriz[j][i]) > abs(matriz[maxRow][i])) {
                 maxRow = j;
             }
         }
 
-        // Intercambiar filas si es necesario
+        // Se cambian filas si es necesario
         if (maxRow != i) {
-            swap(matrix[i], matrix[maxRow]);
+            swap(matriz[i], matriz[maxRow]);
             swap(b[i], b[maxRow]);
         }
 
         // Hacer que el elemento diagonal sea igual a 1
-        double pivot = matrix[i][i];
+        double pivot = matriz[i][i];
         for (int j = i; j < n; ++j) {
-            matrix[i][j] /= pivot;
+            matriz[i][j] /= pivot;
         }
         b[i] /= pivot;
 
         // Eliminar elementos por debajo del elemento diagonal
         for (int j = i + 1; j < n; ++j) {
-            double factor = matrix[j][i];
+            double factor = matriz[j][i];
             for (int k = i; k < n; ++k) {
-                matrix[j][k] -= factor * matrix[i][k];
+                matriz[j][k] -= factor * matriz[i][k];
             }
             b[j] -= factor * b[i];
         }
@@ -58,7 +58,7 @@ void gaussianElimination(vector<vector<double>>& matrix, vector<double>& b) {
     for (int i = n - 1; i >= 0; --i) {
         x[i] = b[i];
         for (int j = i + 1; j < n; ++j) {
-            x[i] -= matrix[i][j] * x[j];
+            x[i] -= matriz[i][j] * x[j];
         }
     }
 
@@ -73,13 +73,13 @@ int main() {
     cout << "Ingrese el número de ecuaciones: ";
     cin >> n;
 
-    vector<vector<double>> matrix(n, vector<double>(n));
+    vector<vector<double>> matriz(n, vector<double>(n));
     vector<double> b(n);
 
     cout << "Ingrese los coeficientes de la matriz (fila por fila):" << endl;
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
-            cin >> matrix[i][j];
+            cin >> matriz[i][j];
         }
     }
 
@@ -89,9 +89,9 @@ int main() {
     }
 
     cout << "Matriz original:" << endl;
-    printMatrix(matrix, b);
+    printMatriz(matriz, b);
 
-    gaussianElimination(matrix, b);
+    eliminacionGaussiana(matriz, b);
 
     return 0;
 }
