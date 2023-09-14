@@ -4,17 +4,17 @@
 
 using namespace std;
 
-struct segmento {
+struct CubicSplineSegment {
     double a, b, c, d, x;
 
-    double evaluar(double xi) {
+    double evaluate(double xi) {
         double dx = xi - x;
         return a + b * dx + c * dx * dx + d * dx * dx * dx;
     }
 };
 
 // Función para calcular los coeficientes de los segmentos cúbicos
-vector<segmento> calcular_segmentos_cubicos(vector<double>& x, vector<double>& y) {
+vector<CubicSplineSegment> calcular_segmentos_cubicos(vector<double>& x, vector<double>& y) {
     int n = x.size();
     vector<double> h(n - 1);
     vector<double> alpha(n - 1);
@@ -39,7 +39,7 @@ vector<segmento> calcular_segmentos_cubicos(vector<double>& x, vector<double>& y
 
     l[n - 1] = 1.0;
     z[n - 1] = 0.0;
-    vector<segmento> segmentos(n);
+    vector<CubicSplineSegment> segmentos(n);
 
     for (int j = n - 2; j >= 0; j--) {
         segmentos[j].a = y[j];
@@ -56,7 +56,7 @@ int main() {
     vector<double> x = {0.0, 1.0, 2.0, 3.0};
     vector<double> y = {1.0,2.7182,7.3891,20.0855};
 
-    vector<segmento> segmentos = calcular_segmentos_cubicos(x, y);
+    vector<CubicSplineSegment> segmentos = calcular_segmentos_cubicos(x, y);
 
     // Evaluar la interpolación cúbica en un punto, por ejemplo, x = 1.5
     double punto_evaluado = 0.5;
@@ -70,7 +70,7 @@ int main() {
         }
     }
 
-    double resultado = segmentos[segmento].evaluar(punto_evaluado);
+    double resultado = segmentos[segmento].evaluate(punto_evaluado);
 
     cout << "El valor interpolado en x = " << punto_evaluado << " es " << resultado << endl;
 
