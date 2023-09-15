@@ -15,16 +15,15 @@ double g(double x) {
 
 int main() {
     double x0;  // Estimación inicial.
-    cout << "Ingrese el valor inicial x0: ";
+    cout << "Ingrese el valor inicial X0: ";
     cin >> x0;
 
     int iteracionesMaximas;
     cout << "Ingrese el número máximo de iteraciones: ";
     cin >> iteracionesMaximas;
 
-    double tolerancia;
-    cout << "Ingrese la tolerancia deseada: ";
-    cin >> tolerancia;
+    double tolerancia = 0.001;
+  
 
     double x = x0;
     int iteracion = 0;

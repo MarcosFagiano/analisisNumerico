@@ -15,7 +15,7 @@ void printMatrix(const vector<vector<double>>& mat) {
 }
 
 // Realiza la descomposición LU de una matriz cuadrada A
-void lu_decomposition(vector<vector<double>>& A, vector<vector<double>>& L, vector<vector<double>>& U) {
+void descomposicion(vector<vector<double>>& A, vector<vector<double>>& L, vector<vector<double>>& U) {
     int n = A.size();
     for (int i = 0; i < n; i++) {
         L[i][i] = 1.0;
@@ -36,7 +36,7 @@ void lu_decomposition(vector<vector<double>>& A, vector<vector<double>>& L, vect
 }
 
 // Resuelve el sistema de ecuaciones lineales LUx = b
-vector<double> solve_lu(const vector<vector<double>>& L, const vector<vector<double>>& U, const vector<double>& b) {
+vector<double> resuelve(const vector<vector<double>>& L, const vector<vector<double>>& U, const vector<double>& b) {
     int n = L.size();
     vector<double> y(n);
     vector<double> x(n);
@@ -84,8 +84,8 @@ int main() {
     vector<vector<double>> L(n, vector<double>(n, 0.0));
     vector<vector<double>> U(n, vector<double>(n, 0.0));
 
-    lu_decomposition(A, L, U);
-    vector<double> x = solve_lu(L, U, b);
+    descomposicion(A, L, U);
+    vector<double> x = resuelve(L, U, b);
 
     cout << "Matriz L:" << endl;
     printMatrix(L);

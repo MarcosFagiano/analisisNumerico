@@ -7,9 +7,9 @@
 using namespace std;
 
 // Función para calcular el polinomio de Lagrange
-double lagrangePolynomial(const vector<double>& x, const vector<double>& y, double xi) {
+double lagrange(const vector<double>& x, const vector<double>& y, double xi) {
     int n = x.size();
-    double result = 0.0;
+    double resultado = 0.0;
 
     for (int i = 0; i < n; ++i) {
         double term = y[i];
@@ -18,10 +18,10 @@ double lagrangePolynomial(const vector<double>& x, const vector<double>& y, doub
                 term *= (xi - x[j]) / (x[i] - x[j]);
             }
         }
-        result += term;
+        resultado += term;
     }
 
-    return result;
+    return resultado;
 }
 
 int main() {
@@ -42,9 +42,9 @@ int main() {
     cout << "Ingrese el valor de xi para evaluar el polinomio de Lagrange: ";
     cin >> xi;
 
-    double result = lagrangePolynomial(x, y, xi);
+    double res = lagrange(x, y, xi);
 
-    cout << "El valor del polinomio de Lagrange en xi es: " << result << endl;
+    cout << "El valor del polinomio de Lagrange en xi es: " << res << endl;
 
     return 0;
 }

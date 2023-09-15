@@ -29,8 +29,8 @@ int main() {
         Xi = x - (funcion(Xi) / derivada(Xi));
         E = abs(Xi - x);
         x = Xi;
-        cout << "BLYAAAAT" << endl;
-    } while (E > 0.000001);
+       
+    } while (E > 0.001);
     return 0;
     
 }

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-struct CubicSplineSegment {
+struct segmentocubico {
     double a, b, c, d, x;
 
     double evaluar(double xi) const {
@@ -13,7 +13,7 @@ struct CubicSplineSegment {
 };
 
 // Función para calcular los coeficientes de los segmentos cúbicos
-vector<CubicSplineSegment> calc_seg_cub(vector<double>& x, vector<double>& y) {
+vector<segmentocubico> calc_seg_cub(vector<double>& x, vector<double>& y) {
     int n = x.size();
     vector<double> h(n - 1);
     vector<double> alfa(n - 1);
@@ -38,7 +38,7 @@ vector<CubicSplineSegment> calc_seg_cub(vector<double>& x, vector<double>& y) {
 
     l[n - 1] = 1.0;
     z[n - 1] = 0.0;
-    vector<CubicSplineSegment> segmentos(n);
+    vector<segmentocubico> segmentos(n);
 
     for (int j = n - 2; j >= 0; j--) {
         segmentos[j].a = y[j];
@@ -55,7 +55,7 @@ int main() {
     vector<double> x = {0.0, 1.0, 2.0, 3.0};
     vector<double> y = {1.0,2.7182,7.3891,20.0855};
 
-    vector<CubicSplineSegment> segmentos = calc_seg_cub(x, y);
+    vector<segmentocubico> segmentos = calc_seg_cub(x, y);
 
     // Evaluar la interpolacion cubica en un punto
     double punto_evaluado = 0.5;
