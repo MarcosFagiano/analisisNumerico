@@ -31,29 +31,32 @@ int main()
     double a, b;
     int n;
 
-    std::cout << "Ingrese el limite inferior (a). Si quieres introducir el numero pi, escribe pi: ";
+    std::cout << "Ingrese el limite inferior (a). (ingrese 'pi' si desea usar pi): ";
     std::string input;
     std::cin >> input;
 
-    if (input == "pi")
-    {
-        a = M_PI;
+    if (input == "pi") {
+        std::cout << "Ingrese el número por el cual desea multiplicar pi: ";
+        double factor;
+        std::cin >> factor;
+        a = M_PI * factor;
     }
-    else
-    {
-        a = std::stod(input); // Convierte la entrada a double
+    else {
+        a = std::stod(input);
     }
 
-    std::cout << "Ingrese el limite superior (b). Si quieres introducir el numero pi, escribe pi: ";
+    std::cout << "Ingrese el limite superior (b). (ingrese 'pi' si desea usar pi): ";
+    std::string input;
     std::cin >> input;
 
-    if (input == "pi")
-    {
-        b = M_PI;
+    if (input == "pi") {
+        std::cout << "Ingrese el número por el cual desea multiplicar pi: ";
+        double factor;
+        std::cin >> factor;
+        b = M_PI * factor;
     }
-    else
-    {
-        b = std::stod(input); // Convierte la entrada a double
+    else {
+        b = std::stod(input);
     }
 
     std::cout << "Ingrese el numero de trapecios (n): ";

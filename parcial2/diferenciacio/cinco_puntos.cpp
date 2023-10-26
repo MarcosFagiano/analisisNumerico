@@ -1,10 +1,11 @@
 #include <iostream>
 #include <cmath>
+#include <iomanip> 
 
 // Función
 double f(double x)
 {
-    return exp(x) * cos(x);
+    return pow((3*x - 1)/(pow(x,2) + 1),2);
 }
 
 // Función para calcular la derivada usando la fórmula de cinco puntos
@@ -27,10 +28,13 @@ int main()
     std::cout << "Ingrese el valor de h (el espaciado entre puntos cercanos): ";
     std::cin >> h;
 
-    // Se hace un bucle en el cual la derivada se va a analizar en todo el intervalo [a, b]
+    // Se muestran los resultados
+    std::cout << "x\t\tf(x)\t\tf'(x)" << std::endl;
+    std::cout << "-\t\t----\t\t-----" << std::endl; // Línea divisoria
     for (double x = a; x <= b; x += h)
     {
-        std::cout << "y'(" << x << ") = " << DerivadaCincoPuntos(x, h) << std::endl;
+        std::cout << std::fixed << std::setprecision(5); // Ajusta la precisión de salida
+        std::cout << x << "\t\t" << f(x) << "\t\t" << DerivadaCincoPuntos(x, h) << std::endl;
     }
 
     return 0;

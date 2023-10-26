@@ -4,7 +4,7 @@
 
 // Función a integrar (reemplaza con tu propia función)
 double funcion(double x) {
-    return 8 + 5 * cos(x);
+    return exp(x)*sin(5*x);
 }
 
 // Método de Simpson para calcular la integral definida
@@ -29,32 +29,35 @@ int main() {
     double a, b;
     int n;
 
-    std::cout << "Ingrese el limite inferior (a). Si quieres introducir el numero pi, escribe pi: ";
-    std::string input;
-    std::cin >> input;
+    std::cout << "Ingrese el limite inferior (a). (ingrese 'pi' si desea usar pi): ";
+    std::string input_a;
+    std::cin >> input_a;
 
-    if (input == "pi")
-    {
-        a = M_PI;
+    if (input_a == "pi") {
+        std::cout << "Ingrese el número por el cual desea multiplicar pi: ";
+        double factor;
+        std::cin >> factor;
+        a = M_PI * factor;
     }
-    else
-    {
-        a = std::stod(input); // Convierte la entrada a double
-    }
-
-    std::cout << "Ingrese el limite superior (b). Si quieres introducir el numero pi, escribe pi: ";
-    std::cin >> input;
-
-    if (input == "pi")
-    {
-        b = M_PI;
-    }
-    else
-    {
-        b = std::stod(input); // Convierte la entrada a double
+    else {
+        a = std::stod(input_a);
     }
 
-    std::cout << "Ingrese el numero de trapecios (n): ";
+    std::cout << "Ingrese el limite superior (b). (ingrese 'pi' si desea usar pi): ";
+    std::string input_b;
+    std::cin >> input_b;
+
+    if (input_b == "pi") {
+        std::cout << "Ingrese el número por el cual desea multiplicar pi: ";
+        double factor;
+        std::cin >> factor;
+        b = M_PI * factor;
+    }
+    else {
+        b = std::stod(input_b);
+    }
+
+    std::cout << "Ingrese el numero de subintervalos (n): ";
     std::cin >> n;
 
     if (n % 2 != 0) {

@@ -49,7 +49,7 @@ int main()
     std::vector<double> solution = solveODE(funcion, y0, a, b, h);
 
     std::cout << "Solución de la EDO usando el método de Heun:\n";
-    for (double t = a; t <= b+0.1; t += h)
+    for (double t = a; t <= b+h; t += h)
     {
         std::cout << "y(" << t << ") = " << solution[static_cast<int>((t - a) / h)] << std::endl;
     }
