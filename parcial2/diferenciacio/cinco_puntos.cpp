@@ -5,7 +5,7 @@
 // Función
 double f(double x)
 {
-    return pow((3*x - 1)/(pow(x,2) + 1),2);
+    return exp(0.1*x)*cos(cos(x));
 }
 
 // Función para calcular la derivada usando la fórmula de cinco puntos
@@ -19,11 +19,33 @@ int main()
     double a, b, h;
 
     // Se introducen los valores de los intervalos y el h, respectivamente
-    std::cout << "Ingrese el valor de a (inicio del intervalo): ";
-    std::cin >> a;
+    std::cout << "Ingrese el limite inferior (a). (ingrese 'pi' si desea usar pi): ";
+    std::string input_a;
+    std::cin >> input_a;
 
-    std::cout << "Ingrese el valor de b (final del intervalo): ";
-    std::cin >> b;
+    if (input_a == "pi") {
+        std::cout << "Ingrese el número por el cual desea multiplicar pi: ";
+        double factor;
+        std::cin >> factor;
+        a = M_PI * factor;
+    }
+    else {
+        a = std::stod(input_a);
+    }
+
+    std::cout << "Ingrese el limite superior (b). (ingrese 'pi' si desea usar pi): ";
+    std::string input_b;
+    std::cin >> input_b;
+
+    if (input_b == "pi") {
+        std::cout << "Ingrese el número por el cual desea multiplicar pi: ";
+        double factor;
+        std::cin >> factor;
+        b = M_PI * factor;
+    }
+    else {
+        b = std::stod(input_b);
+    }
 
     std::cout << "Ingrese el valor de h (el espaciado entre puntos cercanos): ";
     std::cin >> h;

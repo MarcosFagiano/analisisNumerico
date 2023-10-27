@@ -1,11 +1,11 @@
 #include <iostream>
 #include <vector>
-
+#include <cmath>
 // Función que representa la ecuación diferencial dy/dx = f(x, y)
 double f(double x, double y)
 {
     // Cambia esta función de acuerdo a la ecuación diferencial que desees resolver
-    return 2 * y - 6;
+    return x + pow(y,2);
 }
 
 // Método de Runge-Kutta de segundo orden
@@ -17,7 +17,7 @@ void rungeKutta2(double a, double b, double h, double y0)
     std::vector<double> x_values;
     std::vector<double> y_values;
 
-    while (x <= b + h)
+    while (x <= b)
     {
         x_values.push_back(x);
         y_values.push_back(y);
@@ -25,8 +25,8 @@ void rungeKutta2(double a, double b, double h, double y0)
         double k1 = h * f(x, y);
         double k2 = h * f(x + h, y + k1);
 
-        y = y + (k1 + k2) / 2;
         x = x + h;
+        y = y + (k1 + k2) / 2;
     }
 
     // Imprimir los resultados

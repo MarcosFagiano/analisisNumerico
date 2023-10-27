@@ -4,12 +4,13 @@
 
 // Función a integrar (reemplaza con tu propia función)
 double funcion(double x) {
-    return exp(x)*sin(5*x);
+    return exp(0.1*x)*(cos(x));
 }
 
 // Método de Simpson para calcular la integral definida
 double metodoSimpson(double a, double b, int n) {
     double h = (b - a) / n;
+    std::cout << "El h es: " << h << std::endl; // Para verificar que el h sea el correcto
     double integral = funcion(a) + funcion(b); // Puntos extremos
 
     for (int i = 1; i < n; i++) {
@@ -26,7 +27,7 @@ double metodoSimpson(double a, double b, int n) {
 }
 
 int main() {
-    double a, b;
+    double a, b, error;
     int n;
 
     std::cout << "Ingrese el limite inferior (a). (ingrese 'pi' si desea usar pi): ";
@@ -64,6 +65,9 @@ int main() {
         std::cout << "El número de subintervalos debe ser par." << std::endl;
         return 1;
     }
+
+    std::cout << "Ingrese el error a usar: ";
+    std::cin >> error;
 
     double resultado = metodoSimpson(a, b, n);
 
